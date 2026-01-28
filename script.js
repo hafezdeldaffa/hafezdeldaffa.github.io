@@ -75,6 +75,24 @@ window.addEventListener('scroll', () => {
     });
 });
 
+// Mobile Menu Logic
+const menuToggle = document.getElementById('mobile-menu');
+const navLinksContainer = document.querySelector('.nav-links');
+const navLinksItems = document.querySelectorAll('.nav-links a');
+
+menuToggle?.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinksContainer.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+navLinksItems.forEach(item => {
+    item.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinksContainer.classList.remove('active');
+    });
+});
+
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
     typeCode();
@@ -86,8 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Add CSS for fade-in-section via JS to keep style.css cleaner if needed, 
-// but I'll assume they are handled or I can add a few more styles here.
+// Add CSS for fade-in-section via JS to keep style.css cleaner if needed
 const style = document.createElement('style');
 style.textContent = `
     .fade-in-section {
